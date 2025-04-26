@@ -7,8 +7,58 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    @Test
+    public void testStackOperations() {
+        DishStack stack = new DishStack(3);
+        
+      
+        assertTrue(stack.isEmpty());
+        assertEquals(0, stack.size());
+        
+        
+        Dish plate = new Dish("Plate", "Ceramic");
+        Dish bowl = new Dish("Bowl", "Glass");
+        Dish cup = new Dish("Cup", "Porcelain");
+        
+        stack.push(plate);
+        assertFalse(stack.isEmpty());
+        assertEquals(1, stack.size());
+        assertEquals(plate, stack.peek());
+        
+        stack.push(bowl);
+        assertEquals(2, stack.size());
+        assertEquals(bowl, stack.peek());
+        
+        stack.push(cup);
+        assertTrue(stack.isFull());
+        assertEquals(3, stack.size());
+        assertEquals(cup, stack.peek());
+        
+       
+        Dish spoon = new Dish("Spoon", "Silver");
+        stack.push(spoon);
+        assertEquals(3, stack.size()); 
+        assertEquals(cup, stack.peek()); 
+        
+        assertEquals(cup, stack.pop());
+        assertEquals(2, stack.size());
+        assertEquals(bowl, stack.peek());
+        
+        assertEquals(bowl, stack.pop());
+        assertEquals(1, stack.size());
+        assertEquals(plate, stack.peek());
+        
+        assertEquals(plate, stack.pop());
+        assertTrue(stack.isEmpty());
+        assertEquals(0, stack.size());
+        
+       
+        assertNull(stack.pop()); 
+    }
+    
+    @Test
+    public void testPeekEmptyStack() {
+        DishStack stack = new DishStack(2);
+        assertNull(stack.peek()); 
     }
 }

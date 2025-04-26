@@ -4,11 +4,31 @@
 package org.example;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        DishStack stack = new DishStack(3);
+        
+    
+        stack.push(new Dish("Plate", "Ceramic"));
+        stack.push(new Dish("Bowl", "Glass"));
+        stack.push(new Dish("Cup", "Porcelain"));
+        
+
+        stack.push(new Dish("Spoon", "Silver"));
+        
+
+        System.out.println("Top dish: " + stack.peek());
+    
+
+        System.out.println("Current stack size: " + stack.size());
+        
+
+        System.out.println("Popped: " + stack.pop());
+        System.out.println("Popped: " + stack.pop());
+        
+   
+        System.out.println("Current stack size: " + stack.size());
+      
+
+        System.out.println("Top dish: " + stack.peek());
     }
 }
